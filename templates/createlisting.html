@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Listing</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+
+Create New Listing
+{% endblock %}
+{% block content %}
     <h1>Create New Listing</h1>
     <form action="/createlisting" method="POST" enctype="multipart/form-data">
         <label for="title">Title</label>
@@ -28,6 +25,4 @@
         <input type="number" name="price" id="price">
         <button type="submit">Create</button>
     </form>
-    
-</body>
-</html>
+{% endblock %}

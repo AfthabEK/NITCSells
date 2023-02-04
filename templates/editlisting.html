@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Listing</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}
+
+Edit listing {{ listing[2] }}
+{% endblock %}
+{% block content %}
     <h1>Edit listing {{ listing[2] }}</h1>
     <form action="/editlisting/{{ listing[0] }}" method="POST" enctype="multipart/form-data">
         <label for="title">Title</label>
@@ -21,5 +18,4 @@
         <input type="number" name="price" id="price" value="{{ listing[5] }}">
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{% endblock %}
