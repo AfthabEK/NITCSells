@@ -15,6 +15,7 @@
             <th>Category</th>
             <th>Expected price</th>
             <th>Date Requested</th>
+            <th>Actions</th>
     
         </tr>
         {% for request in requests %}
@@ -24,6 +25,7 @@
             <td>{{ request[4] }}</td>
             <td>{{ request[5] }}</td>
             <td>{{ request[6] }}</td>
+            <td><a href="/editrequest/{{ request[0] }}">Edit</a> | <a href="/deleterequest/{{ request[0] }}" onclick="return confirm('Are you sure want to delete this listing?')">Delete</a></td>
            
         {% endfor %}
     </table>

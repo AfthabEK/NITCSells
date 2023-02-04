@@ -15,7 +15,8 @@
             <th>Description</th>
             <th>Category</th>
             <th>Price</th>
-            <th>Date listed</th>         
+            <th>Date listed</th>   
+            <th>Actions</th>      
         </tr>
         {% for listing in listings %}
         <tr>
@@ -27,6 +28,7 @@
             
             <td>{{listing[5]}}</td>
             <td>{{listing[6]}}</td>
+            <td><a href="/editlisting/{{listing[0]}}">Edit</a> | <a href="/deletelisting/{{listing[0]}}" onclick="return confirm('Are you sure want to delete this listing?')">Delete</a></td>
         </tr>
         {% endfor %}
     </table>

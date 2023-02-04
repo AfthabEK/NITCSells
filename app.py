@@ -119,4 +119,65 @@ def viewmyrequests():
     requests = c.fetchall()
     return render_template('viewmyrequests.html', requests=requests)
 
+@app.route('/editlisting/<int:id>', methods=['GET', 'POST'])
+def editlisting(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM listings WHERE id = ?", (id,))
+    listing = c.fetchone()
+    if listing[1] != session['id']:
+        return 'You cannot edit this listing'
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        price = request.form['price']
+        category = request.form['category']
+        c.execute("UPDATE listings SET title = ?, description = ?, price = ?, category = ? WHERE id = ?", (title, description, price, category, id))
+        conn.commit()
+        return redirect(url_for('viewmylistings'))
+    return render_template('editlisting.html', listing=listing)
+
+@app.route('/editrequest/<int:id>', methods=['GET', 'POST'])
+def editrequest(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM requests WHERE id = ?", (id,))
+    requestx = c.fetchone()
+    if requestx[1] != session['id']:
+        return 'You cannot edit this request'
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        price = request.form['price']
+        category = request.form['category']
+        c.execute("UPDATE requests SET title = ?, description = ?, price = ?, category = ? WHERE id = ?", (title, description, price, category, id))
+        conn.commit()
+        return redirect(url_for('viewmyrequests'))
+    return render_template('editrequest.html', request=requestx)
+
+@app.route('/deletelisting/<int:id>')
+def deletelisting(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM listings WHERE id = ?", (id,))
+    listing = c.fetchone()
+    if listing[1] != session['id']:
+        return 'You cannot delete this listing'
+    c.execute("DELETE FROM listings WHERE id = ?", (id,))
+    conn.commit()
+    return redirect(url_for('viewmylistings'))
+
+@app.route('/deleterequest/<int:id>')
+def deleterequest(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM requests WHERE id = ?", (id,))
+    requestx = c.fetchone()
+    if requestx[1] != session['id']:
+        return 'You cannot delete this request'
+    c.execute("DELETE FROM requests WHERE id = ?", (id,))
+    conn.commit()
+    return redirect(url_for('viewmyrequests'))
+
+
 
