@@ -1,4 +1,4 @@
-#NITCSells
+# NITCSells
 This is a project built using Flask,SQLite3, HTML and CSS for code.init()'23. The project is a web application where members of NITC can buy, sell and request secondhand items.
 
 ## Installation
