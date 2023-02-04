@@ -5,7 +5,7 @@ My Requests
 {% endblock %}
 {% block content %}
     <h1>My Requests</h1>
-    <table>
+    <table class="neon-table">
         <tr>
             <th>Title</th>
             <th>Description</th>
@@ -22,7 +22,7 @@ My Requests
             <td>{{ request[4] }}</td>
             <td>{{ request[5] }}</td>
             <td>{{ request[6] }}</td>
-            <td><a href="/editrequest/{{ request[0] }}">Edit</a> | <a href="/deleterequest/{{ request[0] }}" onclick="return confirm('Are you sure want to delete this listing?')">Delete</a></td>
+            <td><a href="/editrequest/{{ request[0] }}">Edit</a> | <a href="/deleterequest/{{ request[0] }}" onclick="return confirm('Are you sure want to delete this request?')">Delete</a></td>
            
         {% endfor %}
     </table>

@@ -36,6 +36,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    msg=''
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']        
@@ -49,8 +50,8 @@ def login():
             session['phone'] = data[3]
             session['id'] = data[0]
             return redirect(url_for('home'))
-        return 'Invalid username or password'
-    return render_template('login.html',msg='')
+        msg= 'Invalid username or password'
+    return render_template('login.html',msg=msg)
 
 @app.route('/home')
 def home():
@@ -73,15 +74,18 @@ def createlisting():
         c = conn.cursor()
         c.execute("INSERT INTO listings (title, description, price, category,user_id,date) VALUES (?, ?, ?, ?, ?,?)", (title, description, price, category,session['id'],current_date))
         conn.commit()
+        msg = 'Listing created successfully'
         #find id of the listing
         c.execute("SELECT id FROM listings WHERE title = ? AND description = ? AND price = ? AND category = ? AND user_id = ? AND date = ?", (title, description, price, category,session['id'],current_date))
         listing_id = c.fetchone()
+        
         if 'file' not in request.files:
-            return redirect(url_for('home'))
+            # use default image from static/uploads
+            return redirect(url_for('viewmylistings',msg=msg))
         file = request.files['file']
         filename = str(listing_id[0]) + '.jpg'
         file.save('static/uploads/' + filename)
-        return redirect(url_for('home'))
+        return redirect(url_for('viewmylistings',msg=msg))
     
 
     return render_template('createlisting.html')
@@ -98,7 +102,7 @@ def createrequest():
         c = conn.cursor()
         c.execute("INSERT INTO requests (title, description, price, category,user_id,date) VALUES (?, ?, ?, ?, ?,?)", (title, description, price, category,session['id'],current_date))
         conn.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('viewmyrequests'))
     return render_template('createrequest.html')
 
 @app.route('/viewlistings')

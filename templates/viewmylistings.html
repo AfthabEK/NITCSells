@@ -27,7 +27,7 @@ My listings
             <td>{{listing[5]}}</td>
             <td>{{listing[6]}}</td>
             <td><a href="/editlisting/{{listing[0]}}">Edit</a> | <a href="/deletelisting/{{listing[0]}}" onclick="return confirm('Are you sure want to delete this listing?')">Delete</a></td>
-            <td><img src="{{ url_for('static',filename='uploads/'+ listing[0]|string +'.jpg') }}" alt="Image" width="100" height="100"></td>
+            <td><img src="{{ url_for('static',filename='uploads/'+ listing[0]|string +'.jpg') }}"  alt="{{ url_for('static',filename='uploads/'+ listing[4]|string +'.jpg') }}" width="100" height="100"></td>
         </tr>
         {% endfor %}
     </table>
