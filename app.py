@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 import datetime
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your secret key'
 app.debug = True
-
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
 @app.route('/')
@@ -69,7 +72,17 @@ def createlisting():
         c = conn.cursor()
         c.execute("INSERT INTO listings (title, description, price, category,user_id,date) VALUES (?, ?, ?, ?, ?,?)", (title, description, price, category,session['id'],current_date))
         conn.commit()
+        #find id of the listing
+        c.execute("SELECT id FROM listings WHERE title = ? AND description = ? AND price = ? AND category = ? AND user_id = ? AND date = ?", (title, description, price, category,session['id'],current_date))
+        listing_id = c.fetchone()
+        if 'file' not in request.files:
+            return redirect(url_for('home'))
+        file = request.files['file']
+        filename = str(listing_id[0]) + '.jpg'
+        file.save('static/uploads/' + filename)
         return redirect(url_for('home'))
+    
+
     return render_template('createlisting.html')
 
 @app.route('/createrequest', methods=['GET', 'POST'])
@@ -132,9 +145,26 @@ def editlisting(id):
         description = request.form['description']
         price = request.form['price']
         category = request.form['category']
+        
         c.execute("UPDATE listings SET title = ?, description = ?, price = ?, category = ? WHERE id = ?", (title, description, price, category, id))
         conn.commit()
+        c.execute("SELECT id FROM listings WHERE title = ? AND description = ? AND price = ? AND category = ? AND user_id = ?", (title, description, price, category,session['id']))
+        listing_id = c.fetchone()
+        
+        if 'file' not in request.files:
+            return redirect(url_for('viewmylistings'))
+        '''
+        filename=str(listing_id[0]) + '.jpg'
+        old_image_path = os.path.join(app.config['UPLOAD_FOLDER'],filename )
+        print(old_image_path)
+        os.remove(old_image_path)
+        '''
+        file = request.files['file']
+        filename = str(listing_id[0]) + '.jpg'
+        new_image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(new_image_path)
         return redirect(url_for('viewmylistings'))
+        
     return render_template('editlisting.html', listing=listing)
 
 @app.route('/editrequest/<int:id>', methods=['GET', 'POST'])

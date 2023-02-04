@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Create New Listing</h1>
-    <form action="/createlisting" method="POST">
+    <form action="/createlisting" method="POST" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
         <label for="category">Category</label>
@@ -19,8 +19,11 @@
             <option value="Furniture">Furniture</option>
             <option value="Other">Other</option>
         </select>
+        <label for="image">Image</label>
+        <input type="file" name="file" id="file">
         <label for="description">Description</label>
         <input type="text" name="description" id="description">
+        
         <label for="price">Price</label>
         <input type="number" name="price" id="price">
         <button type="submit">Create</button>

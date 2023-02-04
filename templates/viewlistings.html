@@ -16,7 +16,8 @@
             <th>Description</th>
             <th>Category</th>
             <th>Price</th>
-            <th>Date listed</th>         
+            <th>Date listed</th>        
+            <th>Image</th> 
         </tr>
         {% for listing in listings %}
         <tr>
@@ -29,6 +30,7 @@
             
             <td>{{listing[5]}}</td>
             <td>{{listing[6]}}</td>
+            <td><img src="{{ url_for('static',filename='uploads/'+ listing[0]|string +'.jpg') }}" alt="Image" width="100" height="100"></td>
         </tr>
         {% endfor %}
     </table>

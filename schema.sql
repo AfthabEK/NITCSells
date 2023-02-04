@@ -27,4 +27,11 @@ Create TABLE requests (
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 
+-- table for images
+CREATE TABLE images (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    listing_id INTEGER NOT NULL,
+    FOREIGN KEY (listing_id) REFERENCES listings(id)
+);
+
 
