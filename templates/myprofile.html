@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+
+My Profile
+{% endblock %}
+{% block content %}
+
+<div class='dashboard-app'>
+    <div class='dashboard-content'>
+        <div class='container'>
+                <div class="title">
+        <h1>My Profile</h1></br>
+        <h4>{{ msg }}</h4>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 ml-175px mr-auto">
+            <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{  user[1]  }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary"> {{  user[3]  }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone no.</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{  user[2]  }}
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

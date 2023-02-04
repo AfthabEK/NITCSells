@@ -5,14 +5,14 @@ Create New Listing
 {% endblock %}
 {% block content %}
     <h1>Create New Listing</h1>
-    <form action="/createlisting" method="POST" enctype="multipart/form-data">
+    <form action="/createlisting" method="POST" enctype="multipart/form-data" class="form-control">
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
         <label for="category">Category</label>
         <select name="category" id="category">
             <option value="Electronics">Electronics</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Books">Books</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Books" selected="selected">Books</option>
             <option value="Furniture">Furniture</option>
             <option value="Other">Other</option>
         </select>

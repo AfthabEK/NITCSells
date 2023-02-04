@@ -1,1 +1,1 @@
-DELETE FROM listings;
+SELECT * from users;

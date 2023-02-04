@@ -1,6 +1,8 @@
-SELECT * from requests;CREATE TABLE Users (
+SELECT * from requests;
+CREATE TABLE Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
+    phone TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL
 );
@@ -12,7 +14,7 @@ CREATE TABLE listings (
     description TEXT NOT NULL,
     category TEXT NOT NULL,
     price INTEGER NOT NULL,
-    date DATE
+    date DATE,
     FOREIGN KEY (user_id) REFERENCES Users(id)
 );
 

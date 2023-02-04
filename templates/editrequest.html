@@ -11,7 +11,13 @@ Edit request {{ request[2] }}
         <label for="description">Description</label>
         <input type="text" name="description" id="description" value="{{ request[3] }}">
         <label for="category">Category</label>
-        <input type="text" name="category" id="category" value="{{ request[4] }}">
+        <select name="category" id="category" >
+            <option value="Electronics">Electronics</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Books" selected="selected">Books</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Other">Other</option>
+        </select>
         <label for="price">Price</label>
         <input type="number" name="price" id="price" value="{{ request[5] }}">
         <input type="submit" value="Submit">

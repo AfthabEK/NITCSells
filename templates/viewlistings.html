@@ -5,11 +5,11 @@ View listings
 {% endblock %}
 {% block content %}
     <h1>View listings</h1>
-    <table>
+    <table class="neon-table">
         <tr>
             
             <th>Title</th>
-            <th>Listed by</th>
+            <th>Seller ID</th>
             <th>Description</th>
             <th>Category</th>
             <th>Price</th>
@@ -20,7 +20,11 @@ View listings
         <tr>
            
             <td>{{listing[2]}}</td>
-            <td>{{listing[1]}}</td>
+            <td>
+                <a href="{{ url_for('otherprofile', id=listing[1]) }}">
+                {{listing[1]}}
+                </a>
+            </td>
             <td>{{listing[3]}}</td>
             
             <td>{{listing[4]}}</td>

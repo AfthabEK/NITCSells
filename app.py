@@ -20,6 +20,7 @@ def register():
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
+        phone = request.form['phone']
         password = request.form['password']
         confirmPassword = request.form['confirmPassword']
         if password != confirmPassword:
@@ -28,7 +29,7 @@ def register():
         
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
-        c.execute("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", (name, email, password))
+        c.execute("INSERT INTO users (name, email,phone, password) VALUES (?, ?, ?, ?)", (name, email,phone, password))
         conn.commit()
         return redirect(url_for('login'))
     return render_template('register.html', msg='')
@@ -36,7 +37,6 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        
         email = request.form['email']
         password = request.form['password']        
         conn = sqlite3.connect('database.db')
@@ -46,6 +46,7 @@ def login():
         if data:
             session['name'] = data[1]
             session['email'] = data[2]
+            session['phone'] = data[3]
             session['id'] = data[0]
             return redirect(url_for('home'))
         return 'Invalid username or password'
@@ -211,3 +212,19 @@ def deleterequest(id):
 
 
 
+@app.route('/myprofile')
+def myprofile():
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM users WHERE id = ?", (session['id'],))
+    user = c.fetchone()
+    return render_template('myprofile.html', user=user)
+
+
+@app.route('/otherprofile/<int:id>')
+def otherprofile(id):
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM users WHERE id = ?", (id,))
+    user = c.fetchone()
+    return render_template('otherprofile.html', user=user)

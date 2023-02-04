@@ -6,7 +6,7 @@ View Requests
 {% block content %}
     <h1>View Requests</h1>
     <h2>{{ msg }}</h2>
-    <table>
+    <table class="neon-table">
         <tr>
             <th>Requester ID</th>
             <th>Title</th>
@@ -18,7 +18,11 @@ View Requests
         </tr>
         {% for request in requests %}
         <tr>
-            <td>{{ request[1] }}</td>
+            <td>
+                <a href="/otherprofile/{{ request[1] }}">
+                {{ request[1] }}
+                </a>
+            </td>
             <td>{{ request[2] }}</td>
             <td>{{ request[3] }}</td>
             <td>{{ request[4] }}</td>
