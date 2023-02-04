@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Requests</title>
+</head>
+<body>
+    <h1>View Requests</h1>
+    <h2>{{ msg }}</h2>
+    <table>
+        <tr>
+            <th>Requester ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Expected price</th>
+            <th>Date Requested</th>
+    
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request[1] }}</td>
+            <td>{{ request[2] }}</td>
+            <td>{{ request[3] }}</td>
+            <td>{{ request[4] }}</td>
+            <td>{{ request[5] }}</td>
+            <td>{{ request[6] }}</td>
+           
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
