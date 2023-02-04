@@ -2,10 +2,12 @@
 This is a project built using Flask,SQLite3, HTML and CSS for code.init()'23. The project is a web application where members of NITC can buy, sell and request secondhand items.
 
 ## Installation
-1. Clone the repository
- git clone https://github.com/AfthabEK/NITCSells.git
-2. Install the requirements using `pip install -r requirements.txt`
-3. Run the app using 'flask run'
+1. Clone the repository:
+    'git clone https://github.com/AfthabEK/NITCSells.git'
+2. Install the requirements using 
+    `pip install -r requirements.txt`
+3. Run the app using 
+    'flask run'
 4. Open the browser and go to http://127.0.0.1:5000/
 
 ## Usage
