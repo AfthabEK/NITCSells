@@ -1,21 +1,25 @@
-Users:
+#NITCSells
+This is a project built using Flask,SQLite3, HTML and CSS for code.init()'23. The project is a web application where members of NITC can buy, sell and request secondhand items.
 
-College students and staff who want to sell or buy second-hand items within the college community.
+## Installation
+1. Clone the repository
+ git clone https://github.com/AfthabEK/NITCSells.git
+2. Install the requirements using `pip install -r requirements.txt`
+3. Run the app using 'flask run'
+4. Open the browser and go to http://127.0.0.1:5000/
 
-Use cases:
+## Usage
+1. Register as a new user
+2. Login to the application
+3. You can post an item for sale, and request an item you want to buy.
+4. You can view and edit the items you have posted for sale or requested
+5. You can view the items posted by other users
+6. You can view the items requested by other users
+7. You can view the profile of other users, using which you can contact them
 
-Buyer Use cases:
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Users should be able to create an account, sign in and out.
-Users should be able to create a new listing for an item they want to sell, with a description, image, price, and other relevant details.
-Users should be able to browse existing listings, search for specific items, and filter results by categories such as electronics, furniture, etc.
-
-Users should be able to view detailed information about a listing, including seller information, and contact the seller if they are interested in buying.
-
-Users should be able to mark an item as sold or delete their listing.
-Users should be able to leave feedback for a seller after a transaction is completed.
-Users should be able to view their own listings and feedback.
-Users should be able to edit their own listings and feedback.
 
 
