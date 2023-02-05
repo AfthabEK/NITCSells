@@ -5,11 +5,13 @@ Edit request {{ request[2] }}
 {% endblock %}
 {% block content %}
     <h1>Edit request {{ request[2] }}</h1>
-    <form action="/editrequest/{{ request[0] }}" method="POST">
-        <label for="title">title</label>
+    <form action="/editrequest/{{ request[0] }}" method="POST" class="form-control">
+        <label for="title">Title</label>
         <input type="text" name="title" id="title" value="{{ request[2] }}">
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" value="{{ request[3] }}">
+        <hr>
+        <label for="description" >Description</label>
+        <textarea type="text" name="description" id="description" value="{{ request[3] }}" size="80" style="vertical-align: top;"></textarea>
+        <hr>
         <label for="category">Category</label>
         <select name="category" id="category" >
             <option value="Electronics">Electronics</option>
@@ -17,8 +19,10 @@ Edit request {{ request[2] }}
             <option value="Books" selected="selected">Books</option>
             <option value="Other">Other</option>
         </select>
+        <hr>
         <label for="price">Price</label>
         <input type="number" name="price" id="price" value="{{ request[5] }}">
+        <hr>
         <input type="submit" value="Submit">
     </form>
 {% endblock %}

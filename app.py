@@ -29,7 +29,11 @@ def register():
         
         conn = sqlite3.connect('database.db')
         c = conn.cursor()
-        c.execute("INSERT INTO users (name, email,phone, password) VALUES (?, ?, ?, ?)", (name, email,phone, password))
+        try:
+            c.execute("INSERT INTO users (name, email,phone, password) VALUES (?, ?, ?, ?)", (name, email,phone, password))
+        except :
+            msg = 'Email already exists'
+            return render_template('register.html', msg=msg)
         conn.commit()
         return redirect(url_for('login'))
     return render_template('register.html', msg='')

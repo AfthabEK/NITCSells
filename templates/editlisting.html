@@ -5,11 +5,13 @@ Edit listing {{ listing[2] }}
 {% endblock %}
 {% block content %}
     <h1>Edit listing {{ listing[2] }}</h1>
-    <form action="/editlisting/{{ listing[0] }}" method="POST" enctype="multipart/form-data">
+    <form action="/editlisting/{{ listing[0] }}" method="POST" enctype="multipart/form-data" class="form-control">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" value="{{ listing[2] }}">
+        <hr>
         <label for="description">Description</label>
-        <input type="text" name="description" id="description" value="{{ listing[3] }}">
+        <textarea type="text" name="description" id="description" value="{{ listing[3] }}" size="80" style="vertical-align: top;"></textarea>
+        <hr>
         <label for="category">Category</label>
         <select name="category" id="category" >
             <option value="Electronics">Electronics</option>
@@ -17,10 +19,13 @@ Edit listing {{ listing[2] }}
             <option value="Books" selected="selected">Books</option>
             <option value="Other">Other</option>
         </select>
+        <hr>
         <label for="image">Image</label>
         <input type="file" name="file" id="file">
+        <hr>
         <label for="price">Price</label>
         <input type="number" name="price" id="price" value="{{ listing[5] }}">
+        <hr>
         <input type="submit" value="Submit">
     </form>
 {% endblock %}

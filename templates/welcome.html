@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <title>Index</title>
+    <style type="text/css">
+        body{
+background: #e5e4e7;
+
+background: -webkit-linear-gradient(to right, #c0c6c6, rgb(175, 180, 180));
+
+background: linear-gradient(to right, #d5e7e7, rgb(198, 220, 226))
+}
+   </style>
 </head>
 <body>
-    <h1>Welcome to NITCSells</h1>
+    <h1 style="text-align: center; margin-top: 50px;">Welcome to NITCSells</h1>
     <br>
-    <a href="{{ url_for('login') }}">Login</a>
-    <br>
-    <a href="{{ url_for('register') }}">Register</a>    
+    <a type="button" class="btn btn-primary" style="margin-left: 42%;;" href="{{ url_for('login') }}">Login</a>
+    <a type="button" class="btn btn-primary" style="margin-left: 5%;" href="{{ url_for('register') }}">Register</a>
 </body>
 </html>

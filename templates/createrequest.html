@@ -5,11 +5,13 @@ Create New Request
 {% endblock %}
 {% block content %}
     <h1>Create New Request</h1>
-    <form action="/createrequest" method="POST">
+    <form action="/createrequest" method="POST" class="form-control">
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
+        <hr>
         <label for="description">Description</label>
-        <input type="text" name="description" id="description">
+        <textarea type="text" name="description" id="description" size="80" style="vertical-align: top;"></textarea>
+        <hr>
         <label for="category">Category</label>
         <select name="category" id="category">
             <option value="Electronics">Electronics</option>
@@ -17,8 +19,10 @@ Create New Request
             <option value="Books" selected="selected">Books</option>
             <option value="Other">Other</option>
         </select>
+        <hr>
         <label for="price">Expected Price</label>
         <input type="number" name="price" id="price">
+        <hr>
         <input type="submit" value="Create Request">
     </form>
 {% endblock %}
