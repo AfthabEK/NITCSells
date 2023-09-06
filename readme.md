@@ -1,5 +1,5 @@
 # NITCSells
-This is a project built using Flask,SQLite3, HTML and CSS for code.init()'23. The project is a web application where members of NITC can buy, sell and request secondhand items. The website is is currently hosted in [pythonanywhere](afthab747.pythonanywhere.com). Sample username : kkkkkaa@gmail.com and password : kkkkkaa@gmail.com
+This is a project built using Flask,SQLite3, HTML and CSS for code.init()'23. The project is a web application where members of NITC can buy, sell and request secondhand items. The website is is currently hosted in [pythonanywhere](afthab747.pythonanywhere.com). Sample username : kkkkkaa@gmail.com and password : qEWywvxx9RX4piD
 
 ## Installation
 1. Clone the repository:
